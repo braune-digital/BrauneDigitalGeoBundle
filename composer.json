@@ -1,0 +1,30 @@
+{
+    "name" : "braune-digital/geo-bundle",
+    "description" : "Geo bundle based on JJsGeoBundle",
+    "type" : "symfony-bundle",
+    "authors" : [{
+        "name" : "Braune Digital GmbH",
+        "email" : "mail@braune-digital.com"
+    }],
+    "keywords" : [
+        "geo bundle"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+    },
+    "autoload" : {
+        "psr-4" : {
+            "BrauneDigital\\GeoBundle\\" : ""
+        }
+    },
+    "repositories" : [{
+    	
+    }],
+    "extra" : {
+    "branch-alias" : {
+            "dev-master" : "master-dev"
+        }
+    }
+}
