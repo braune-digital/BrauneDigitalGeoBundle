@@ -1,0 +1,27 @@
+services:
+    braunedigital_geo.update:
+        class: BrauneDigital\GeoBundle\Services\Update
+        arguments: [@doctrine.orm.entity_manager, @service_container]
+
+    sonata.admin.braunedigital.geo.city:
+        class: BrauneDigital\GeoBundle\Admin\CityAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "BrauneDigital Geo", label: "Städte" }
+        arguments:
+            - ~
+            - BrauneDigital\GeoBundle\Entity\City
+            - ~
+        calls:
+            - [ setTranslationDomain, [BrauneDigitalGeoBundle]]
+            - [ setContainer, [ @service_container ]]
+
+    sonata.admin.braunedigital.geo.country:
+        class: BrauneDigital\GeoBundle\Admin\CountryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "BrauneDigital Geo", label: "Länder" }
+        arguments:
+            - ~
+            - BrauneDigital\GeoBundle\Entity\Country
+            - ~
+        calls:
+            - [ setTranslationDomain, [BrauneDigitalGeoBundle]]
