@@ -1,3 +1,8 @@
+parameters:
+    braunedigital_geo.request.param_converter.country.class: BrauneDigital\GeoBundle\Request\ParamConverter\CountryParamConverter
+    braunedigital_geo.request.param_converter.city.class: BrauneDigital\GeoBundle\Request\ParamConverter\CityParamConverter
+
+
 services:
     braunedigital_geo.update:
         class: BrauneDigital\GeoBundle\Services\Update
@@ -25,3 +30,15 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [BrauneDigitalGeoBundle]]
+
+    braunedigital_geo.request.param_converter.city:
+        class: "%braunedigital_geo.request.param_converter.city.class%"
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: request.param_converter, converter: city, priority: 10 }
+
+    braunedigital_geo.request.param_converter.country:
+        class: "%braunedigital_geo.request.param_converter.country.class%"
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: request.param_converter, converter: country, priority: 10 }
