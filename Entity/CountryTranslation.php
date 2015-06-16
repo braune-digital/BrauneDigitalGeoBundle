@@ -11,8 +11,11 @@ use Application\AppBundle\Entity\SeoBase;
  * @ORM\Table(name="geo_country_translation")
  * )
  */
-class CountryTranslation extends SeoBase
+class CountryTranslation
 {
+
+	use \BrauneDigital\GeoBundle\Model\Base;
+	use \BrauneDigital\GeoBundle\Model\SeoBase;
 
 	use ORMBehaviors\Translatable\Translation;
 	use ORMBehaviors\Sluggable\Sluggable;

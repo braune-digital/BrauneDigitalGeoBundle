@@ -17,8 +17,11 @@ use JMS\Serializer\Annotation\MaxDepth;
  * @ORM\Entity
  * @ORM\Table(name="geo_city_translation")
  */
-class CityTranslation extends SeoBase
+class CityTranslation
 {
+
+	use \BrauneDigital\GeoBundle\Model\Base;
+	use \BrauneDigital\GeoBundle\Model\SeoBase;
 
 	use ORMBehaviors\Translatable\Translation;
 	use ORMBehaviors\Sluggable\Sluggable;
