@@ -19,8 +19,8 @@ class CountryTranslation
 
 	use ORMBehaviors\Translatable\Translation;
 	use ORMBehaviors\Sluggable\Sluggable;
-	use \Application\AppBundle\Model\Sluggable\SluggableMethods {
-		\Application\AppBundle\Model\Sluggable\SluggableMethods::generateSlugValue insteadof ORMBehaviors\Sluggable\Sluggable;
+	use \Likez\BaseBundle\Model\Sluggable\SluggableMethods {
+		\Likez\BaseBundle\Model\Sluggable\SluggableMethods::generateSlugValue insteadof ORMBehaviors\Sluggable\Sluggable;
 	}
 
 	/**

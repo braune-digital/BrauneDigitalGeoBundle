@@ -32,8 +32,8 @@ class State
 {
 
 	use ORMBehaviors\Translatable\Translatable;
-	use \Application\AppBundle\Model\Translatable\TranslatableMethods {
-		\Application\AppBundle\Model\Translatable\TranslatableMethods::proxyCurrentLocaleTranslation insteadof ORMBehaviors\Translatable\Translatable;
+	use \BrauneDigital\TranslationBaseBundle\Model\Translatable\TranslatableMethods {
+		\BrauneDigital\TranslationBaseBundle\Model\Translatable\TranslatableMethods::proxyCurrentLocaleTranslation insteadof ORMBehaviors\Translatable\Translatable;
 	}
 
 

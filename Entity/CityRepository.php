@@ -3,7 +3,6 @@
 namespace BrauneDigital\GeoBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
-use Application\AppBundle\Entity\AutoCompleteRepository;
 
 
 class CityRepository extends AutoCompleteRepository
