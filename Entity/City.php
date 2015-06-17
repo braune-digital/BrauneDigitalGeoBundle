@@ -78,8 +78,6 @@ class City
 	 */
 	protected $modificationDate;
 
-	protected $events;
-
     protected $image;
 
 	/**

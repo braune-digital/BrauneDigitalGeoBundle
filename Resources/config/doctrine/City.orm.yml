@@ -113,13 +113,4 @@ BrauneDigital\GeoBundle\Entity\City:
                 image_id:
                     referencedColumnName: id
             orphanRemoval: false
-    oneToMany:
-        events:
-            targetEntity: Escapegamer\AppBundle\Entity\Event
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: city
-            inversedBy: null
-            orphanRemoval: false
-            orderBy: null
     lifecycleCallbacks: {  }
