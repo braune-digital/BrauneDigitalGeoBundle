@@ -14,26 +14,12 @@ use Doctrine\ORM\Mapping\Table;
 /**
  * Timezone
  *
- * @Entity(repositoryClass="TimezoneRepository")
- * @Table(name="geo_timezone")
  */
 class Timezone
 {
     /**
-     * Unique identifier which represents the timezone in the local database.
-     *
-     * @Column(type="integer")
-     * @GeneratedValue
-     * @Id
-     * @var int
-     */
-    protected $id;
-
-    /**
      * Country
      *
-     * @ManyToOne(targetEntity="Country")
-     * @JoinColumn(nullable=false)
      * @var Country
      */
     protected $country;
@@ -41,7 +27,6 @@ class Timezone
     /**
      * Timezone code
      *
-     * @Column(name="code", type="string", nullable=true)
      * @var string
      */
     protected $code;

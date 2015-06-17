@@ -1,0 +1,125 @@
+BrauneDigital\GeoBundle\Entity\City:
+    type: mappedSuperclass
+    table: geo_city
+    repositoryClass: BrauneDigital\GeoBundle\Entity\CityRepository
+    fields:
+        geonameIdentifier:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+            column: geoname_id
+        latitude:
+            type: float
+            scale: 6
+            length: null
+            unique: false
+            nullable: false
+            precision: 9
+        longitude:
+            type: float
+            scale: 6
+            length: null
+            unique: false
+            nullable: false
+            precision: 9
+        creationDate:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            column: creation_date
+        modificationDate:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+            column: modification_date
+        oldSlug:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: true
+            precision: 0
+            column: old_slug
+        oldNameUtf8:
+            type: string
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+            column: old_name_utf8
+        oldNameAscii:
+            type: string
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+            column: old_name_ascii
+        fcode:
+            type: string
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+    manyToOne:
+        state:
+            targetEntity: BrauneDigital\GeoBundle\Entity\State
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                state_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        country:
+            targetEntity: BrauneDigital\GeoBundle\Entity\Country
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                country_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        timezone:
+            targetEntity: BrauneDigital\GeoBundle\Entity\Timezone
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                timezone_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        image:
+            targetEntity: Application\Sonata\MediaBundle\Entity\Media
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                image_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToMany:
+        events:
+            targetEntity: Escapegamer\AppBundle\Entity\Event
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: city
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    lifecycleCallbacks: {  }

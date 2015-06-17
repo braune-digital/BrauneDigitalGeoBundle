@@ -2,59 +2,24 @@
 
 namespace BrauneDigital\GeoBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping\Column;
-use Doctrine\ORM\Mapping\Entity;
-use Doctrine\ORM\Mapping\GeneratedValue;
-use Doctrine\ORM\Mapping\Id;
-use Doctrine\ORM\Mapping\JoinColumn;
-use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-use JMS\Serializer\Annotation\ExclusionPolicy;
-use JMS\Serializer\Annotation\Expose;
-use JMS\Serializer\Annotation\VirtualProperty;
-use JMS\Serializer\Annotation\SerializedName;
-use JMS\Serializer\Annotation\Accessor;
-use JMS\Serializer\Annotation\MaxDepth;
 
 
 /**
  * State
 
  *
- * @Entity(repositoryClass="StateRepository")
- * @Table(name="geo_state")
  * @ExclusionPolicy("all")
  */
 class State
 {
-
-	use ORMBehaviors\Translatable\Translatable;
-	use \BrauneDigital\TranslationBaseBundle\Model\Translatable\TranslatableMethods {
-		\BrauneDigital\TranslationBaseBundle\Model\Translatable\TranslatableMethods::proxyCurrentLocaleTranslation insteadof ORMBehaviors\Translatable\Translatable;
-	}
-
-
-
-	/**
-	 * Locality Identifier
-	 *
-	 * @Column(type="integer")
-	 * @GeneratedValue
-	 * @Id
-	 * @var integer
-	 */
-	protected $id;
-
 	/**
 	 * GeoNames.org ID
 	 *
 	 * Uniquely identifies this locality for syncronization from data on
 	 * GeoNames.org.
 	 *
-	 * @Column(name="geoname_id", type="integer", nullable=true)
 	 * @var integer
 	 */
 	protected $geonameIdentifier;
@@ -62,8 +27,6 @@ class State
 	/**
 	 * Country
 	 *
-	 * @ManyToOne(targetEntity="Country")
-	 * @JoinColumn(nullable=false)
 	 * @var Country
 	 */
 	protected $country;
@@ -71,7 +34,6 @@ class State
 	/**
 	 * Name (ASCII encoded)
 	 *
-	 * @Column(name="name_ascii", type="string")
 	 * @var string
 	 */
 	protected $nameAscii;
@@ -79,7 +41,6 @@ class State
 	/**
 	 * Latitude coordinate
 	 *
-	 * @Column(name="latitude", type="float", scale=6, precision=9)
 	 * @var float
 	 */
 	protected $latitude;
@@ -87,7 +48,6 @@ class State
 	/**
 	 * Longitude coordinate
 	 *
-	 * @Column(name="longitude", type="float", scale=6, precision=9)
 	 * @var float
 	 */
 	protected $longitude;
@@ -95,7 +55,6 @@ class State
 	/**
 	 * Timezone
 	 *
-	 * @ManyToOne(targetEntity="Timezone")
 	 * @var Timezone
 	 */
 	protected $timezone;
@@ -103,7 +62,6 @@ class State
 	/**
 	 * Creation date
 	 *
-	 * @Column(name="creation_date", type="datetime")
 	 * @var DateTime
 	 */
 	protected $creationDate;
@@ -111,14 +69,12 @@ class State
 	/**
 	 * Modification date
 	 *
-	 * @Column(name="modification_date", type="datetime", nullable=true)
 	 * @var DateTime
 	 */
 	protected $modificationDate;
 
 	/**
 	 * @var string
-	 * @Column(name="old_slug", type="string", length=255, nullable=true)
 	 */
 	private $oldSlug;
 
@@ -130,16 +86,6 @@ class State
 		$this->creationDate = new \DateTime();
 	}
 
-
-	/**
-	 * Returns the locality ID
-	 *
-	 * @return integer
-	 */
-	public function getID()
-	{
-		return $this->id;
-	}
 
 	/**
 	 * Returns the GeoNames.org identifier of this locality

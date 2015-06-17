@@ -1,0 +1,71 @@
+BrauneDigital\GeoBundle\Entity\Country:
+    type: mappedSuperclass
+    table: geo_country
+    repositoryClass: BrauneDigital\GeoBundle\Entity\CountryRepository
+    fields:
+        code:
+            type: string
+            scale: 0
+            length: 2
+            unique: true
+            nullable: false
+            precision: 0
+        domain:
+            type: string
+            scale: 0
+            length: 2
+            unique: false
+            nullable: true
+            precision: 0
+        postalCodeFormat:
+            type: string
+            scale: 0
+            length: 60
+            unique: false
+            nullable: true
+            precision: 0
+            column: postal_code_format
+        postalCodeRegex:
+            type: string
+            scale: 0
+            length: 180
+            unique: false
+            nullable: true
+            precision: 0
+            column: postal_code_regex
+        phonePrefix:
+            type: string
+            scale: 0
+            length: 20
+            unique: false
+            nullable: true
+            precision: 0
+            column: phone_prefix
+        languages:
+            type: json_array
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+    oneToMany:
+        cities:
+            targetEntity: BrauneDigital\GeoBundle\Entity\City
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: country
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    manyToOne:
+        image:
+            targetEntity: Application\Sonata\MediaBundle\Entity\Media
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                image_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

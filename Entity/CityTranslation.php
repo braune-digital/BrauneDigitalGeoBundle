@@ -6,32 +6,14 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Application\AppBundle\Entity\SeoBase;
 
 
-use JMS\Serializer\Annotation\ExclusionPolicy;
-use JMS\Serializer\Annotation\Expose;
-use JMS\Serializer\Annotation\VirtualProperty;
-use JMS\Serializer\Annotation\SerializedName;
-use JMS\Serializer\Annotation\Accessor;
-use JMS\Serializer\Annotation\MaxDepth;
-
-/**
- * @ORM\Entity
- * @ORM\Table(name="geo_city_translation")
- */
 class CityTranslation
 {
 
 	use \BrauneDigital\GeoBundle\Model\Base;
 	use \BrauneDigital\GeoBundle\Model\SeoBase;
 
-	use ORMBehaviors\Translatable\Translation;
-	use ORMBehaviors\Sluggable\Sluggable;
-	use \Likez\BaseBundle\Model\Sluggable\SluggableMethods {
-		\Likez\BaseBundle\Model\Sluggable\SluggableMethods::generateSlugValue insteadof ORMBehaviors\Sluggable\Sluggable;
-	}
-
 	/**
 	 * Name (UTF-8 encoded)
-	 * @ORM\Column(name="name_utf8", type="string")
 	 * @var string
 	 * @Expose
 	 */
@@ -40,7 +22,6 @@ class CityTranslation
 
     /**
      * Description
-     * @ORM\Column(name="description", type="text")
      * @var string
      */
     protected $description;

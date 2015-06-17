@@ -4,22 +4,10 @@ namespace BrauneDigital\GeoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
-/**
- * @ORM\Entity()
- * @ORM\Table(name="geo_state_translation")
- */
 class StateTranslation
 {
-
-	use ORMBehaviors\Translatable\Translation;
-	use ORMBehaviors\Sluggable\Sluggable;
-	use \Likez\BaseBundle\Model\Sluggable\SluggableMethods {
-		\Likez\BaseBundle\Model\Sluggable\SluggableMethods::generateSlugValue insteadof ORMBehaviors\Sluggable\Sluggable;
-	}
-
 	/**
 	 * Name (UTF-8 encoded)
-	 * @ORM\Column(name="name_utf8", type="string")
 	 * @var string
 	 */
 	protected $nameUtf8;

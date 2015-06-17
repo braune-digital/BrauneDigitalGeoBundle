@@ -1,0 +1,24 @@
+BrauneDigital\GeoBundle\Entity\Timezone:
+    type: mappedSuperclass
+    table: geo_timezone
+    repositoryClass: BrauneDigital\GeoBundle\Entity\TimezoneRepository
+    fields:
+        code:
+            type: string
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+    manyToOne:
+        country:
+            targetEntity: BrauneDigital\GeoBundle\Entity\Country
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                country_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

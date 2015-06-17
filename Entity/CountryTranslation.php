@@ -6,26 +6,14 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 use Application\AppBundle\Entity\SeoBase;
 
-/**
- * @ORM\Entity()
- * @ORM\Table(name="geo_country_translation")
- * )
- */
 class CountryTranslation
 {
 
 	use \BrauneDigital\GeoBundle\Model\Base;
 	use \BrauneDigital\GeoBundle\Model\SeoBase;
 
-	use ORMBehaviors\Translatable\Translation;
-	use ORMBehaviors\Sluggable\Sluggable;
-	use \Likez\BaseBundle\Model\Sluggable\SluggableMethods {
-		\Likez\BaseBundle\Model\Sluggable\SluggableMethods::generateSlugValue insteadof ORMBehaviors\Sluggable\Sluggable;
-	}
-
 	/**
 	 * Name
-	 * @ORM\Column(length=50)
 	 * @var string
 	 */
 	protected $name;

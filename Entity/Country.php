@@ -2,57 +2,19 @@
 
 namespace BrauneDigital\GeoBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping\Column;
-use Doctrine\ORM\Mapping\Entity;
-use Doctrine\ORM\Mapping\GeneratedValue;
-use Doctrine\ORM\Mapping\Id;
-use Doctrine\ORM\Mapping\JoinColumn;
-use Doctrine\ORM\Mapping\JoinTable;
-use Doctrine\ORM\Mapping\ManyToMany;
-use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\OneToMany;
-use Doctrine\ORM\Mapping\OneToOne;
-use Doctrine\ORM\Mapping\Table;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-
-use JMS\Serializer\Annotation\ExclusionPolicy;
-use JMS\Serializer\Annotation\Expose;
-use JMS\Serializer\Annotation\VirtualProperty;
-use JMS\Serializer\Annotation\SerializedName;
-use JMS\Serializer\Annotation\Accessor;
-use JMS\Serializer\Annotation\MaxDepth;
 
 /**
  * Country
  *
- *
- * @Entity(repositoryClass="CountryRepository")
- * @Table(name="geo_country")
  * @ExclusionPolicy("all")
  */
 class Country
 {
 
-	use ORMBehaviors\Translatable\Translatable;
-	use \BrauneDigital\TranslationBaseBundle\Model\Translatable\TranslatableMethods {
-		\BrauneDigital\TranslationBaseBundle\Model\Translatable\TranslatableMethods::proxyCurrentLocaleTranslation insteadof ORMBehaviors\Translatable\Translatable;
-	}
-
-    /**
-     * Unique identifier which represents the country in the local database.
-     *
-     * @Column(type="integer")
-     * @GeneratedValue
-     * @Id
-     * @var int
-     */
-    protected $id;
-
     /**
      * ISO code (2 character)
      *
-     * @Column(length=2, unique=true)
      * @var string
 	 * @Expose
      */
@@ -61,7 +23,6 @@ class Country
     /**
      * Top level domain
      *
-     * @Column(length=2, nullable=true)
      * @var string
      */
     protected $domain;
@@ -69,7 +30,6 @@ class Country
     /**
      * Postal code format
      *
-     * @Column(name="postal_code_format", length=60, nullable=true)
      * @var string
      */
     protected $postalCodeFormat;
@@ -77,7 +37,6 @@ class Country
     /**
      * Postal code regular expression
      *
-     * @Column(name="postal_code_regex", length=180, nullable=true)
      * @var string
      */
     protected $postalCodeRegex;
@@ -88,7 +47,6 @@ class Country
      * Where there is more than one possible phone prefix the different prefixes
      * will be separated by commas.
      *
-     * @Column(name="phone_prefix", length=20, nullable=true)
      * @var string
      */
     protected $phonePrefix;
@@ -98,19 +56,11 @@ class Country
     /**
      * @var array
      *
-     * @Column(name="languages", type="json_array", nullable=true)
      */
     protected $languages;
 
-    /**
-     * @OneToMany(targetEntity="\BrauneDigital\GeoBundle\Entity\City", mappedBy="country")
-     */
     protected $cities;
 
-    /**
-     * @ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @JoinColumn(name="image_id", referencedColumnName="id", nullable=true)
-     */
     protected $image;
 
     /**
@@ -123,25 +73,6 @@ class Country
     {
         $languages = array();
     }
-
-	/**
-	 * @return int
-	 */
-	public function getId()
-	{
-		return $this->id;
-	}
-
-	/**
-	 * @param int $id
-	 */
-	public function setId($id)
-	{
-		$this->id = $id;
-	}
-
-
-
 
     /**
      * Gets the unique 2 character ISO code of this country

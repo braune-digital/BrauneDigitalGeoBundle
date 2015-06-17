@@ -5,46 +5,18 @@ namespace BrauneDigital\GeoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
-use JMS\Serializer\Annotation\ExclusionPolicy;
-use JMS\Serializer\Annotation\Expose;
-use JMS\Serializer\Annotation\VirtualProperty;
-use JMS\Serializer\Annotation\SerializedName;
-use JMS\Serializer\Annotation\Accessor;
-use JMS\Serializer\Annotation\MaxDepth;
-
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
- *
- * @ORM\Table(name="geo_city")
- * @ORM\Entity(repositoryClass="CityRepository")
  * @ExclusionPolicy("all")
  */
 
 class City
 {
 
-	use ORMBehaviors\Translatable\Translatable;
-	use \BrauneDigital\TranslationBaseBundle\Model\Translatable\TranslatableMethods {
-		\BrauneDigital\TranslationBaseBundle\Model\Translatable\TranslatableMethods::proxyCurrentLocaleTranslation insteadof ORMBehaviors\Translatable\Translatable;
-	}
-
-
-	/**
-	 * @var int
-	 * @ORM\Column(name="id", type="integer")
-	 * @ORM\Id
-	 * @ORM\GeneratedValue(strategy="AUTO")
-	 * @Expose
-	 */
-	private $id;
-
-
 	/**
 	 * State
 	 *
-	 * @ORM\ManyToOne(targetEntity="State")
-     * @ORM\JoinColumn(nullable=true)
 	 * @var State
 	 * @Expose
 	 */
@@ -58,7 +30,6 @@ class City
 	 * Uniquely identifies this locality for syncronization from data on
 	 * GeoNames.org.
 	 *
-	 * @ORM\Column(name="geoname_id", type="integer", nullable=true)
 	 * @var integer
 	 */
 	protected $geonameIdentifier;
@@ -66,8 +37,6 @@ class City
 	/**
 	 * Country
 	 *
-	 * @ORM\ManyToOne(targetEntity="Country")
-	 * @ORM\JoinColumn(nullable=false)
 	 * @Expose
 	 * @var Country
 	 */
@@ -77,7 +46,6 @@ class City
 	/**
 	 * Latitude coordinate
 	 *
-	 * @ORM\Column(name="latitude", type="float", scale=6, precision=9, nullable=false)
 	 * @var float
 	 */
 	protected $latitude;
@@ -85,7 +53,6 @@ class City
 	/**
 	 * Longitude coordinate
 	 *
-	 * @ORM\Column(name="longitude", type="float", scale=6, precision=9, nullable=false)
 	 * @var float
 	 */
 	protected $longitude;
@@ -93,8 +60,6 @@ class City
 	/**
 	 * Timezone
 	 *
-	 * @ORM\ManyToOne(targetEntity="Timezone")
-     * @ORM\JoinColumn(nullable=true)
 	 * @var Timezone
 	 */
 	protected $timezone;
@@ -102,7 +67,6 @@ class City
 	/**
 	 * Creation date
 	 *
-	 * @ORM\Column(name="creation_date", type="datetime")
 	 * @var DateTime
 	 */
 	protected $creationDate;
@@ -110,46 +74,33 @@ class City
 	/**
 	 * Modification date
 	 *
-	 * @ORM\Column(name="modification_date", type="datetime", nullable=true)
 	 * @var DateTime
 	 */
 	protected $modificationDate;
 
-	/**
-	 * @ORM\OneToMany(targetEntity="\Application\AppBundle\Entity\Offer", mappedBy="city")
-	 */
 	protected $events;
 
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="image_id", referencedColumnName="id", nullable=true)
-     */
     protected $image;
 
 	/**
 	 * @var string
-	 * @ORM\Column(name="old_slug", type="string", length=255, nullable=true)
 	 */
 	private $oldSlug;
 
 	/**
 	 * Name (UTF-8 encoded)
-	 * @ORM\Column(name="old_name_utf8", type="string", nullable=true)
 	 * @var string
 	 */
 	protected $oldNameUtf8;
 
 	/**
 	 * Name (UTF-8 encoded)
-	 * @ORM\Column(name="old_name_ascii", type="string", nullable=true)
 	 * @var string
 	 */
 	protected $oldNameAscii;
 
     /**
      * Name (UTF-8 encoded)
-     * @ORM\Column(name="fcode", type="string", nullable=true)
      * @var string
      */
     protected $fcode;
@@ -164,24 +115,6 @@ class City
         $this->latitude = 0;
         $this->longitude = 0;
 	}
-
-	/**
-	 * @return int
-	 */
-	public function getId()
-	{
-		return $this->id;
-	}
-
-	/**
-	 * @param int $id
-	 */
-	public function setId($id)
-	{
-		$this->id = $id;
-	}
-
-
 
 
 	/**
