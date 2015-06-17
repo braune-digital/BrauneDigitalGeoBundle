@@ -48,15 +48,6 @@ BrauneDigital\GeoBundle\Entity\Country:
             unique: false
             nullable: true
             precision: 0
-    oneToMany:
-        cities:
-            targetEntity: BrauneDigital\GeoBundle\Entity\City
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: country
-            inversedBy: null
-            orphanRemoval: false
-            orderBy: null
     manyToOne:
         image:
             targetEntity: Application\Sonata\MediaBundle\Entity\Media

@@ -12,7 +12,7 @@ BrauneDigital\GeoBundle\Entity\Timezone:
             precision: 0
     manyToOne:
         country:
-            targetEntity: BrauneDigital\GeoBundle\Entity\Country
+            targetEntity: Application\BrauneDigital\GeoBundle\Entity\Country
             cascade: {  }
             fetch: LAZY
             mappedBy: null

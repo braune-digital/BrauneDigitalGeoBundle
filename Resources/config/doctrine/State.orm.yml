@@ -59,7 +59,7 @@ BrauneDigital\GeoBundle\Entity\State:
             column: old_slug
     manyToOne:
         country:
-            targetEntity: BrauneDigital\GeoBundle\Entity\Country
+            targetEntity: Application\BrauneDigital\GeoBundle\Entity\Country
             cascade: {  }
             fetch: LAZY
             mappedBy: null
@@ -69,7 +69,7 @@ BrauneDigital\GeoBundle\Entity\State:
                     referencedColumnName: id
             orphanRemoval: false
         timezone:
-            targetEntity: BrauneDigital\GeoBundle\Entity\Timezone
+            targetEntity: Application\BrauneDigital\GeoBundle\Entity\Timezone
             cascade: {  }
             fetch: LAZY
             mappedBy: null

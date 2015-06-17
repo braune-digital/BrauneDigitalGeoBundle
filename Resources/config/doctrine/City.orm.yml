@@ -74,7 +74,7 @@ BrauneDigital\GeoBundle\Entity\City:
             precision: 0
     manyToOne:
         state:
-            targetEntity: BrauneDigital\GeoBundle\Entity\State
+            targetEntity: Application\BrauneDigital\GeoBundle\Entity\State
             cascade: {  }
             fetch: LAZY
             mappedBy: null
@@ -84,7 +84,7 @@ BrauneDigital\GeoBundle\Entity\City:
                     referencedColumnName: id
             orphanRemoval: false
         country:
-            targetEntity: BrauneDigital\GeoBundle\Entity\Country
+            targetEntity: Application\BrauneDigital\GeoBundle\Entity\Country
             cascade: {  }
             fetch: LAZY
             mappedBy: null
@@ -94,7 +94,7 @@ BrauneDigital\GeoBundle\Entity\City:
                     referencedColumnName: id
             orphanRemoval: false
         timezone:
-            targetEntity: BrauneDigital\GeoBundle\Entity\Timezone
+            targetEntity: Application\BrauneDigital\GeoBundle\Entity\Timezone
             cascade: {  }
             fetch: LAZY
             mappedBy: null
