@@ -58,7 +58,7 @@ class CityAdmin extends TranslationAdmin
                         'label' => 'Description',
                         'disabled' => false,
                         'empty_data' => '',
-                        'config_name' => 'escapegamer_default'
+                        'config_name' => 'likez_default'
                     ),
                     'seoDescription' => array(
                         'field_type' => 'text',
