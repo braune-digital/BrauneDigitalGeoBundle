@@ -67,7 +67,7 @@ class CityParamConverter implements ParamConverterInterface {
 
 	public function supports(ParamConverter $configuration)
 	{
-		return "BrauneDigital\GeoBundle\Entity\City" === $configuration->getClass();
+		return "Application\BrauneDigital\GeoBundle\Entity\City" === $configuration->getClass();
 	}
 
 

@@ -1,8 +1,8 @@
 <?php
 namespace BrauneDigital\GeoBundle\Services;
 
-use BrauneDigital\GeoBundle\Entity\City;
-use BrauneDigital\GeoBundle\Entity\State;
+use Application\BrauneDigital\GeoBundle\Entity\City;
+use Application\BrauneDigital\GeoBundle\Entity\State;
 use GuzzleHttp\Client;
 
 class Update {

@@ -53,7 +53,7 @@ class CountryParamConverter implements ParamConverterInterface {
 
 	public function supports(ParamConverter $configuration)
 	{
-		return "BrauneDigital\GeoBundle\Entity\Country" === $configuration->getClass();
+		return "Application\BrauneDigital\GeoBundle\Entity\Country" === $configuration->getClass();
 	}
 
 
