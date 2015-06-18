@@ -27,7 +27,7 @@ class UpdateStatesCommand extends ContainerAwareCommand
 
         $upt = $this->getContainer()->get('braunedigital_geo.update');
 
-        $states = $em->getRepository('BrauneDigitalGeoBundle:State')->findAll();
+        $states = $em->getRepository('ApplicationBrauneDigitalGeoBundle:State')->findAll();
 
         $numLocales = count($em->getRepository('BrauneDigitalTranslationBaseBundle:Language')->getEnabledCodes());
 

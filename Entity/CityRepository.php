@@ -14,7 +14,7 @@ class CityRepository extends AutoCompleteRepository
         }
         else{
             //filter sub regions
-            $query = $this->getEntityManager()->createQuery("SELECT c FROM BrauneDigitalGeoBundle:City c WHERE c.fcode <> 'PPLX' OR c.fcode IS NULL");
+            $query = $this->getEntityManager()->createQuery("SELECT c FROM ApplicationBrauneDigitalGeoBundle:City c WHERE c.fcode <> 'PPLX' OR c.fcode IS NULL");
             return $query->getResult();
         }
     }

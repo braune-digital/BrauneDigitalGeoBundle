@@ -47,7 +47,7 @@ class UpdateCountriesCommand extends ContainerAwareCommand
                 continue;
             }
             foreach ($countries as $country) {
-                $entity = $em->getRepository('BrauneDigitalGeoBundle:Country')->findOneByCode($country['countryCode']);
+                $entity = $em->getRepository('ApplicationBrauneDigitalGeoBundle:Country')->findOneByCode($country['countryCode']);
 
                 if (!$entity) {
                     $entity = new Country();

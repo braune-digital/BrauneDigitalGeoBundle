@@ -20,14 +20,14 @@ class CityParamConverter implements ParamConverterInterface {
 	{
 
 		if ($request->attributes->get('city_id')) {
-			$city = $this->em->getRepository('BrauneDigitalGeoBundle:City')->find($request->attributes->get('city_id'));
+			$city = $this->em->getRepository('ApplicationBrauneDigitalGeoBundle:City')->find($request->attributes->get('city_id'));
 		} else {
 
 			$slug = $request->attributes->get('city');
 
 			$query = $this->em
 				->createQuery(
-					'SELECT c FROM BrauneDigitalGeoBundle:City c '
+					'SELECT c FROM ApplicationBrauneDigitalGeoBundle:City c '
 					. 'JOIN c.translations ctr '
 					. 'WHERE ctr.slug = :slug OR c.id = :id '
 					. 'ORDER BY c.id asc ')
@@ -41,7 +41,7 @@ class CityParamConverter implements ParamConverterInterface {
 			if (count($cities) == 0) {
 				$query = $this->em
 					->createQuery(
-						'SELECT c FROM BrauneDigitalGeoBundle:City c '
+						'SELECT c FROM ApplicationBrauneDigitalGeoBundle:City c '
 						. 'WHERE c.oldSlug = :slug '
 						. 'ORDER BY c.id asc ')
 					->setParameters(array(

@@ -29,7 +29,7 @@ class Update {
            /* //search for a city with this name
             $dql = "
 				  SELECT c
-				  FROM BrauneDigitalGeoBundle:City c
+				  FROM ApplicationBrauneDigitalGeoBundle:City c
 				  JOIN c.translations ctr
 				  WHERE ctr.nameUtf8 LIKE :nameUtf8
 				  ORDER BY ctr.nameUtf8
@@ -77,8 +77,8 @@ class Update {
 
         if($result != null && array_key_exists('adminId1', $result) && array_key_exists('geonameId', $result)) {
 
-            $state = $this->em->getRepository('BrauneDigitalGeoBundle:State')->findOneByGeonameIdentifier($result['adminId1']);
-            $country = $this->em->getRepository('BrauneDigitalGeoBundle:Country')->findOneByCode($result['countryCode']);
+            $state = $this->em->getRepository('ApplicationBrauneDigitalGeoBundle:State')->findOneByGeonameIdentifier($result['adminId1']);
+            $country = $this->em->getRepository('ApplicationBrauneDigitalGeoBundle:Country')->findOneByCode($result['countryCode']);
 
             //check if state exists
             if ($state == null) {
@@ -137,7 +137,7 @@ class Update {
             $result = $response->json();
 
             if($result != null) {
-                $country = $this->em->getRepository('BrauneDigitalGeoBundle:Country')->findOneByCode($result['countryCode']);
+                $country = $this->em->getRepository('ApplicationBrauneDigitalGeoBundle:Country')->findOneByCode($result['countryCode']);
 
 				$state->translate('en')->setNameUtf8($result['name']);
                 $state->setNameAscii($result['asciiName']);
@@ -159,7 +159,7 @@ class Update {
 
             if($result != null && array_key_exists('alternateNames', $result)) {
 
-                $repository = $this->em->getRepository('BrauneDigitalGeoBundle:StateTranslation');
+                $repository = $this->em->getRepository('ApplicationBrauneDigitalGeoBundle:StateTranslation');
 
                 foreach($result['alternateNames'] as $trans){
                     if (array_key_exists('lang', $trans) && array_key_exists('name', $trans) &&  in_array($trans['lang'], $this->locales) ) {
@@ -175,7 +175,7 @@ class Update {
     }
 
     public function updateAll(){
-        $cities = $this->em->getRepository('BrauneDigitalGeoBundle:City')->findAll(true);
+        $cities = $this->em->getRepository('ApplicationBrauneDigitalGeoBundle:City')->findAll(true);
         foreach($cities as $city) {
             $this->updateCity($city);
         }

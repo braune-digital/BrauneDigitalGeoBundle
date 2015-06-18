@@ -109,7 +109,6 @@ class City
 	public function __construct()
 	{
 		$this->creationDate = new \DateTime();
-		$this->events = new ArrayCollection();
         $this->latitude = 0;
         $this->longitude = 0;
 	}
