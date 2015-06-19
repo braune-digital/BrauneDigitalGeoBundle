@@ -17,7 +17,7 @@ class UpdateCountriesCommand extends ContainerAwareCommand
 	protected function configure()
 	{
 		$this
-			->setName('escapegamer:geo:updatecountries')
+			->setName('braunedigital:geo:updatecountries')
 			->setDescription('Updating countries')
 		;
 	}

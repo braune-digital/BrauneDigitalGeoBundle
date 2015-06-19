@@ -15,7 +15,7 @@ class UpdateStatesCommand extends ContainerAwareCommand
 	protected function configure()
 	{
 		$this
-			->setName('escapegamer:geo:updatestates')
+			->setName('braunedigital:geo:updatestates')
 			->setDescription('Updating states')
 		;
 	}
