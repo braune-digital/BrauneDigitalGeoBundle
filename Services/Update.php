@@ -3,6 +3,7 @@ namespace BrauneDigital\GeoBundle\Services;
 
 use Application\BrauneDigital\GeoBundle\Entity\City;
 use Application\BrauneDigital\GeoBundle\Entity\State;
+use Application\BrauneDigital\GeoBundle\Entity\Timezone;
 use GuzzleHttp\Client;
 
 class Update {
@@ -99,7 +100,7 @@ class Update {
             $city->setFcode($result['fcode']);
 
             $city->setState($state);
-            $city->setTimezone($this->em->getRepository('BrauneDigitalGeoBundle:Timezone')->findOneByCode($result['timezone']['timeZoneId']));
+            $city->setTimezone($this->em->getRepository('ApplicationBrauneDigitalGeoBundle:Timezone')->findOneByCode($result['timezone']['timeZoneId']));
             $city->setCountry($country);
             $city->setGeonameIdentifier($result['geonameId']);
 
@@ -143,7 +144,7 @@ class Update {
                 $state->setNameAscii($result['asciiName']);
                 $state->setLatitude($result['lat']);
                 $state->setLongitude($result['lng']);
-                $state->setTimezone($this->em->getRepository('BrauneDigitalGeoBundle:Timezone')->findOneByCode($result['timezone']['timeZoneId']));
+                $state->setTimezone($this->em->getRepository('ApplicationBrauneDigitalGeoBundle:Timezone')->findOneByCode($result['timezone']['timeZoneId']));
                 $state->setCountry($country);
                 $state->setGeonameIdentifier($result['geonameId']);
 				$this->em->persist($state);
