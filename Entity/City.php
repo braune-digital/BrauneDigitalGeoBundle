@@ -337,8 +337,8 @@ class City
         $this->image = $image;
     }
 
-	public function getNumEvents() {
-		return $this->events->count();
+	public function getNumOffers() {
+		return $this->offers->count();
 	}
 
 	public function __call($method, $arguments)
