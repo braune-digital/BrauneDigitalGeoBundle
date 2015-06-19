@@ -4,13 +4,13 @@ namespace BrauneDigital\GeoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * State
 
  *
- * @ExclusionPolicy("all")
+ * @JMS\ExclusionPolicy("all")
  */
 class State
 {
@@ -301,7 +301,7 @@ class State
 	}
 
 	/**
-	 * @VirtualProperty
+	 * @JMS\VirtualProperty
 	 */
 	public function getNameUtf8() {
 		$property = $this->translate()->getNameUtf8();
