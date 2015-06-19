@@ -14,7 +14,7 @@ services:
             - { name: sonata.admin, manager_type: orm, group: "BrauneDigital Geo", label: "Städte" }
         arguments:
             - ~
-            - BrauneDigital\GeoBundle\Entity\City
+            - Application\BrauneDigital\GeoBundle\Entity\City
             - ~
         calls:
             - [ setTranslationDomain, [BrauneDigitalGeoBundle]]
@@ -26,7 +26,7 @@ services:
             - { name: sonata.admin, manager_type: orm, group: "BrauneDigital Geo", label: "Länder" }
         arguments:
             - ~
-            - BrauneDigital\GeoBundle\Entity\Country
+            - Application\BrauneDigital\GeoBundle\Entity\Country
             - ~
         calls:
             - [ setTranslationDomain, [BrauneDigitalGeoBundle]]

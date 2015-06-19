@@ -2,7 +2,7 @@
 
 namespace BrauneDigital\GeoBundle\Command;
 
-use BrauneDigital\GeoBundle\Entity\Country;
+use Application\BrauneDigital\GeoBundle\Entity\Country;
 use GuzzleHttp\Client;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\Table;
@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use BrauneDigital\GeoBundle\Entity\City;
+use Application\BrauneDigital\GeoBundle\Entity\City;
 
 class UpdateCountriesCommand extends ContainerAwareCommand
 {
@@ -47,7 +47,7 @@ class UpdateCountriesCommand extends ContainerAwareCommand
                 continue;
             }
             foreach ($countries as $country) {
-                $entity = $em->getRepository('BrauneDigitalGeoBundle:Country')->findOneByCode($country['countryCode']);
+                $entity = $em->getRepository('ApplicationBrauneDigitalGeoBundle:Country')->findOneByCode($country['countryCode']);
 
                 if (!$entity) {
                     $entity = new Country();

@@ -88,7 +88,7 @@ BrauneDigital\GeoBundle\Entity\City:
             cascade: {  }
             fetch: LAZY
             mappedBy: null
-            inversedBy: null
+            inversedBy: cities
             joinColumns:
                 country_id:
                     referencedColumnName: id

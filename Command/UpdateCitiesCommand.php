@@ -8,7 +8,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use BrauneDigital\GeoBundle\Entity\City;
+use Application\BrauneDigital\GeoBundle\Entity\City;
 
 class UpdateCitiesCommand extends ContainerAwareCommand
 {
@@ -25,7 +25,7 @@ class UpdateCitiesCommand extends ContainerAwareCommand
 
 		$em = $this->getContainer()->get('doctrine')->getManager();
         $upt = $this->getContainer()->get('braunedigital_geo.update');
-        $cities = $em->getRepository('BrauneDigitalGeoBundle:City')->findAll(true);
+        $cities = $em->getRepository('ApplicationBrauneDigitalGeoBundle:City')->findAll(true);
         $numLocales = count($em->getRepository('BrauneDigitalTranslationBaseBundle:Language')->getEnabledCodes());
 
         $numUpdated = 0;

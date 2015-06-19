@@ -21,13 +21,13 @@ class CountryParamConverter implements ParamConverterInterface {
     {
 
         if ($request->attributes->get('country_id')) {
-            $city = $this->em->getRepository('BrauneDigitalGeoBundle:Country')->find($request->attributes->get('country_id'));
+            $city = $this->em->getRepository('ApplicationBrauneDigitalGeoBundle:Country')->find($request->attributes->get('country_id'));
         } else {
 
             $slug = $request->attributes->get('country');
             $query = $this->em
                 ->createQuery(
-                    'SELECT c FROM BrauneDigitalGeoBundle:Country c '
+                    'SELECT c FROM ApplicationBrauneDigitalGeoBundle:Country c '
                     . 'JOIN c.translations ctr '
                     . 'WHERE ctr.slug = :slug OR c.id = :id '
                     . 'ORDER BY c.id asc ')
@@ -53,7 +53,7 @@ class CountryParamConverter implements ParamConverterInterface {
 
 	public function supports(ParamConverter $configuration)
 	{
-		return "BrauneDigital\GeoBundle\Entity\Country" === $configuration->getClass();
+		return "Application\BrauneDigital\GeoBundle\Entity\Country" === $configuration->getClass();
 	}
 
 
