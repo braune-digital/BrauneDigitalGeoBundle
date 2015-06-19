@@ -3,11 +3,12 @@
 namespace BrauneDigital\GeoBundle\Entity;
 
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Country
  *
- * @ExclusionPolicy("all")
+ * @JMS\ExclusionPolicy("all")
  */
 class Country
 {
@@ -16,7 +17,7 @@ class Country
      * ISO code (2 character)
      *
      * @var string
-	 * @Expose
+	 * @JMS\Expose
      */
     protected $code;
 

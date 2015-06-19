@@ -4,7 +4,7 @@ namespace BrauneDigital\GeoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Application\AppBundle\Entity\SeoBase;
-
+use JMS\Serializer\Annotation as JMS;
 
 class CityTranslation
 {
@@ -15,7 +15,7 @@ class CityTranslation
 	/**
 	 * Name (UTF-8 encoded)
 	 * @var string
-	 * @Expose
+	 * @JMS\Expose
 	 */
 	protected $nameUtf8;
 

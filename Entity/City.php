@@ -7,8 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
+use JMS\Serializer\Annotation as JMS;
+
 /**
- * @ExclusionPolicy("all")
+ * @JMS\ExclusionPolicy("all")
  */
 
 class City
@@ -18,7 +20,7 @@ class City
 	 * State
 	 *
 	 * @var State
-	 * @Expose
+	 * @JMS\Expose
 	 */
 	protected $state;
 
@@ -37,7 +39,7 @@ class City
 	/**
 	 * Country
 	 *
-	 * @Expose
+	 * @JMS\Expose
 	 * @var Country
 	 */
 	protected $country;
@@ -164,7 +166,7 @@ class City
 
 	/**
 	 * Returns the name of the locality
-	 * @VirtualProperty
+	 * @JMS\VirtualProperty
 	 * @return string
 	 */
 	public function getName()
@@ -447,7 +449,7 @@ class City
 
 
 	/**
-	 * @VirtualProperty
+	 * @JMS\VirtualProperty
 	 */
 	public function getLabel() {
 		$label = $this->getName();
