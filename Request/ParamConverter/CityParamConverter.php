@@ -52,7 +52,7 @@ class CityParamConverter implements ParamConverterInterface {
 					$city = $cities[0];
 					$request->attributes->set('redirect', true);
 				} else {
-					throw new NotFoundHttpException();
+					throw new NotFoundHttpException($request->getPathInfo());
 				}
 			} else {
 				$city = $cities[0];
@@ -60,7 +60,7 @@ class CityParamConverter implements ParamConverterInterface {
 		}
 
 		if (!$city) {
-			throw new NotFoundHttpException();
+			throw new NotFoundHttpException($request->getPathInfo());
 		}
 
 		$param = $configuration->getName();
