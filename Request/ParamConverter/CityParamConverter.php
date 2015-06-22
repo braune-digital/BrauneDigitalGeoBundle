@@ -59,6 +59,10 @@ class CityParamConverter implements ParamConverterInterface {
 			}
 		}
 
+		if (!$city) {
+			throw new NotFoundHttpException();
+		}
+
 		$param = $configuration->getName();
 		$request->attributes->set($param, $city);
 
