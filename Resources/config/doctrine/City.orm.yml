@@ -77,6 +77,7 @@ BrauneDigital\GeoBundle\Entity\City:
             targetEntity: Application\BrauneDigital\GeoBundle\Entity\State
             cascade: {  }
             fetch: LAZY
+            nullable: true
             mappedBy: null
             inversedBy: null
             joinColumns:
