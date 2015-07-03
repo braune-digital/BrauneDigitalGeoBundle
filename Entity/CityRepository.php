@@ -5,7 +5,7 @@ namespace BrauneDigital\GeoBundle\Entity;
 use Doctrine\ORM\EntityRepository;
 
 
-class CityRepository
+class CityRepository extends EntityRepository
 {
     public function findAll($showAll = false){
         if($showAll)
