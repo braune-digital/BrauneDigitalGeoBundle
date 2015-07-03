@@ -470,4 +470,8 @@ class City
 		$label .= ($this->getState()) ? ', ' . $this->getState()->getNameUtf8() : '';
 		return $label;
 	}
+
+	public function getType() {
+		return 'city';
+	}
 }
