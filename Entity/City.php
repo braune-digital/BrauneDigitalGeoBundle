@@ -3,7 +3,6 @@
 namespace BrauneDigital\GeoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
@@ -104,12 +103,6 @@ class City
      * @var string
      */
     protected $fcode;
-
-    /**
-     * @var ArrayCollection
-     */
-    protected $offers;
-
 
 	/**
 	 * Creates a new locality
@@ -313,23 +306,6 @@ class City
         return $this->getLatitude() . ',' . $this->getLongitude();
     }
 
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getOffers()
-    {
-        return $this->offers;
-    }
-
-    /**
-     * @param ArrayCollection $offers
-     */
-    public function setOffers($offers)
-    {
-        $this->offers = $offers;
-    }
-    
     /**
      * @return mixed
      */
@@ -345,10 +321,6 @@ class City
     {
         $this->image = $image;
     }
-
-	public function getNumOffers() {
-		return $this->offers->count();
-	}
 
 	/**
 	 * @param $method
