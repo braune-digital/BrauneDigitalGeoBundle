@@ -105,6 +105,12 @@ class City
      */
     protected $fcode;
 
+    /**
+     * @var ArrayCollection
+     */
+    protected $offers;
+
+
 	/**
 	 * Creates a new locality
 	 */
@@ -307,22 +313,23 @@ class City
         return $this->getLatitude() . ',' . $this->getLongitude();
     }
 
+
     /**
      * @return ArrayCollection
      */
-    public function getEvents()
+    public function getOffers()
     {
-        return $this->events;
+        return $this->offers;
     }
 
     /**
-     * @param ArrayCollection $events
+     * @param ArrayCollection $offers
      */
-    public function setRelation($events)
+    public function setOffers($offers)
     {
-        $this->events = $events;
+        $this->offers = $offers;
     }
-
+    
     /**
      * @return mixed
      */
