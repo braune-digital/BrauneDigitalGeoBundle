@@ -286,5 +286,10 @@ class Country
 
 	}
 
-
+    /**
+     * @param $method
+     */
+    public function __get($method) {
+        return $this->proxyCurrentLocaleTranslation($method);
+    }
 }
