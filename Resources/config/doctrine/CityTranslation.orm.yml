@@ -1,6 +1,6 @@
-BrauneDigital\GeoBundle\Entity\CityTranslation:
+'BrauneDigital\GeoBundle\Entity\CityTranslation':
     type: mappedSuperclass
-    table: geo_city_translation
+    table: bd_geo_city_translation
     fields:
         nameUtf8:
             type: string

@@ -13,6 +13,8 @@
         "MIT"
     ],
     "require" : {
+        "braune-digital/translation-base": "^1.0",
+        "jms/serializer-bundle": "^1.0"
     },
     "autoload" : {
         "psr-4" : {

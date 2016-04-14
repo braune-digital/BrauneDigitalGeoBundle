@@ -1,6 +1,6 @@
-BrauneDigital\GeoBundle\Entity\CountryTranslation:
+'BrauneDigital\GeoBundle\Entity\CountryTranslation':
     type: mappedSuperclass
-    table: geo_country_translation
+    table: bd_geo_country_translation
     fields:
         name:
             type: string

@@ -23,8 +23,6 @@ class City
 	 */
 	protected $state;
 
-
-
 	/**
 	 * GeoNames.org ID
 	 *
@@ -78,8 +76,6 @@ class City
 	 * @var DateTime
 	 */
 	protected $modificationDate;
-
-    protected $image;
 
 	/**
 	 * @var string
@@ -304,22 +300,6 @@ class City
 
     public function getGeopoint() {
         return $this->getLatitude() . ',' . $this->getLongitude();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param mixed $image
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
     }
 
 	/**

@@ -24,7 +24,7 @@ class UpdateCitiesCommand extends ContainerAwareCommand
 	{
 
 		$em = $this->getContainer()->get('doctrine')->getManager();
-        $upt = $this->getContainer()->get('braunedigital_geo.update');
+        $upt = $this->getContainer()->get('braune_digital.geo.update');
         $cities = $em->getRepository('ApplicationBrauneDigitalGeoBundle:City')->findAll(true);
         $numLocales = count($em->getRepository('BrauneDigitalTranslationBaseBundle:Language')->getEnabledCodes());
 

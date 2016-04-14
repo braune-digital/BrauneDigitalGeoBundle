@@ -1,44 +1,49 @@
 parameters:
-    braunedigital_geo.request.param_converter.country.class: BrauneDigital\GeoBundle\Request\ParamConverter\CountryParamConverter
-    braunedigital_geo.request.param_converter.city.class: BrauneDigital\GeoBundle\Request\ParamConverter\CityParamConverter
+    braune_digital.geo.request.param_converter.country.class: 'BrauneDigital\GeoBundle\Request\ParamConverter\CountryParamConverter'
+    braune_digital.geo.request.param_converter.country.priority: 10
+    braune_digital.geo.request.param_converter.city.class: 'BrauneDigital\GeoBundle\Request\ParamConverter\CityParamConverter'
+    braune_digital.geo.request.param_converter.city.priority: 10
+    braune_digital.geo.update.class: 'BrauneDigital\GeoBundle\Services\Update'
+    braune_digital.geo.city.admin.class: 'BrauneDigital\GeoBundle\Admin\CityAdmin'
+    braune_digital.geo.country.admin.class: 'BrauneDigital\GeoBundle\Admin\CountryAdmin'
 
 
 services:
-    braunedigital_geo.update:
-        class: BrauneDigital\GeoBundle\Services\Update
-        arguments: [@doctrine.orm.entity_manager, @service_container]
+    braune_digital.geo.update:
+        class: '%braune_digital.geo.update.class%'
+        arguments: ['@doctrine.orm.entity_manager', '@service_container']
 
     sonata.admin.braunedigital.geo.city:
-        class: BrauneDigital\GeoBundle\Admin\CityAdmin
+        class: '%braune_digital.geo.city.admin.class%'
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "BrauneDigital Geo", label: "Städte" }
+            - { name: sonata.admin, manager_type: orm, group: "BrauneDigital Geo", label: "Cities" }
         arguments:
             - ~
-            - Application\BrauneDigital\GeoBundle\Entity\City
+            - 'Application\BrauneDigital\GeoBundle\Entity\City'
             - ~
         calls:
             - [ setTranslationDomain, [BrauneDigitalGeoBundle]]
-            - [ setContainer, [ @service_container ]]
+            - [ setContainer, [ '@service_container']]
 
     sonata.admin.braunedigital.geo.country:
-        class: BrauneDigital\GeoBundle\Admin\CountryAdmin
+        class: '%braune_digital.geo.country.admin.class%'
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "BrauneDigital Geo", label: "Länder" }
+            - { name: sonata.admin, manager_type: orm, group: "BrauneDigital Geo", label: "Countries" }
         arguments:
             - ~
-            - Application\BrauneDigital\GeoBundle\Entity\Country
+            - 'Application\BrauneDigital\GeoBundle\Entity\Country'
             - ~
         calls:
             - [ setTranslationDomain, [BrauneDigitalGeoBundle]]
 
-    braunedigital_geo.request.param_converter.city:
-        class: "%braunedigital_geo.request.param_converter.city.class%"
-        arguments: [@doctrine.orm.entity_manager]
+    braune_digital.geo.request.param_converter.city:
+        class: "%braune_digital.geo.request.param_converter.city.class%"
+        arguments: ['@doctrine.orm.entity_manager']
         tags:
-            - { name: request.param_converter, converter: city, priority: 10 }
+            - { name: request.param_converter, converter: city, priority: '%braune_digital.geo.request.param_converter.city.priority%' }
 
-    braunedigital_geo.request.param_converter.country:
-        class: "%braunedigital_geo.request.param_converter.country.class%"
-        arguments: [@doctrine.orm.entity_manager]
+    braune_digital.geo.request.param_converter.country:
+        class: "%braune_digital.geo.request.param_converter.country.class%"
+        arguments: ['@doctrine.orm.entity_manager']
         tags:
-            - { name: request.param_converter, converter: country, priority: 10 }
+            - { name: request.param_converter, converter: country, priority: '%braune_digital.geo.request.param_converter.country.priority%' }

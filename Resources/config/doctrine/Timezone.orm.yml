@@ -1,7 +1,7 @@
-BrauneDigital\GeoBundle\Entity\Timezone:
+'BrauneDigital\GeoBundle\Entity\Timezone':
     type: mappedSuperclass
-    table: geo_timezone
-    repositoryClass: BrauneDigital\GeoBundle\Entity\TimezoneRepository
+    table: bd_geo_timezone
+    repositoryClass: 'BrauneDigital\GeoBundle\Entity\TimezoneRepository'
     fields:
         code:
             type: string
@@ -12,7 +12,7 @@ BrauneDigital\GeoBundle\Entity\Timezone:
             precision: 0
     manyToOne:
         country:
-            targetEntity: Application\BrauneDigital\GeoBundle\Entity\Country
+            targetEntity: 'Application\BrauneDigital\GeoBundle\Entity\Country'
             cascade: {  }
             fetch: LAZY
             mappedBy: null

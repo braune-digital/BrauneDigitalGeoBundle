@@ -1,7 +1,7 @@
-BrauneDigital\GeoBundle\Entity\City:
+'BrauneDigital\GeoBundle\Entity\City':
     type: mappedSuperclass
-    table: geo_city
-    repositoryClass: BrauneDigital\GeoBundle\Entity\CityRepository
+    table: bd_geo_city
+    repositoryClass: 'BrauneDigital\GeoBundle\Entity\CityRepository'
     fields:
         geonameIdentifier:
             type: integer
@@ -74,7 +74,7 @@ BrauneDigital\GeoBundle\Entity\City:
             precision: 0
     manyToOne:
         state:
-            targetEntity: Application\BrauneDigital\GeoBundle\Entity\State
+            targetEntity: 'Application\BrauneDigital\GeoBundle\Entity\State'
             cascade: {  }
             fetch: LAZY
             nullable: true
@@ -85,7 +85,7 @@ BrauneDigital\GeoBundle\Entity\City:
                     referencedColumnName: id
             orphanRemoval: false
         country:
-            targetEntity: Application\BrauneDigital\GeoBundle\Entity\Country
+            targetEntity: 'Application\BrauneDigital\GeoBundle\Entity\Country'
             cascade: {  }
             fetch: LAZY
             mappedBy: null
@@ -95,23 +95,13 @@ BrauneDigital\GeoBundle\Entity\City:
                     referencedColumnName: id
             orphanRemoval: false
         timezone:
-            targetEntity: Application\BrauneDigital\GeoBundle\Entity\Timezone
+            targetEntity: 'Application\BrauneDigital\GeoBundle\Entity\Timezone'
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
                 timezone_id:
-                    referencedColumnName: id
-            orphanRemoval: false
-        image:
-            targetEntity: Application\Sonata\MediaBundle\Entity\Media
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                image_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

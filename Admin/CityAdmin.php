@@ -85,9 +85,6 @@ class CityAdmin extends TranslationAdmin
                 'label' => ''
             ))
             ->add('country')
-            ->add('image', 'sonata_type_model_list', array(
-                'required' => false
-            ))
             ->add('state', null, array('disabled' => true))
             ->add('latitude', 'number', array('required' => false, 'disabled'  => true))
             ->add('longitude', 'number', array('required' => false, 'disabled'  => true))
@@ -114,7 +111,6 @@ class CityAdmin extends TranslationAdmin
 				'label' => 'City'
 			))
             ->addIdentifier('country')
-            ->add('image')
         ;
     }
 
@@ -125,7 +121,7 @@ class CityAdmin extends TranslationAdmin
     }
     public function postUpdate($city)
     {
-        $this->getContainer()->get('braunedigital_geo.update')->updateCity($city);
+        $this->getContainer()->get('braune_digital.geo.update')->updateCity($city);
     }
 
     public function prePersist($city){

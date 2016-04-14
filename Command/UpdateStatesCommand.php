@@ -25,7 +25,7 @@ class UpdateStatesCommand extends ContainerAwareCommand
 
 		$em = $this->getContainer()->get('doctrine')->getManager();
 
-        $upt = $this->getContainer()->get('braunedigital_geo.update');
+        $upt = $this->getContainer()->get('braune_digital.geo.update');
 
         $states = $em->getRepository('ApplicationBrauneDigitalGeoBundle:State')->findAll();
 

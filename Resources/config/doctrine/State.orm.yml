@@ -1,7 +1,7 @@
-BrauneDigital\GeoBundle\Entity\State:
+'BrauneDigital\GeoBundle\Entity\State':
     type: mappedSuperclass
-    table: geo_state
-    repositoryClass: BrauneDigital\GeoBundle\Entity\StateRepository
+    table: bd_geo_state
+    repositoryClass: 'BrauneDigital\GeoBundle\Entity\StateRepository'
     fields:
         geonameIdentifier:
             type: integer
@@ -59,7 +59,7 @@ BrauneDigital\GeoBundle\Entity\State:
             column: old_slug
     manyToOne:
         country:
-            targetEntity: Application\BrauneDigital\GeoBundle\Entity\Country
+            targetEntity: 'Application\BrauneDigital\GeoBundle\Entity\Country'
             cascade: {  }
             fetch: LAZY
             mappedBy: null
@@ -69,7 +69,7 @@ BrauneDigital\GeoBundle\Entity\State:
                     referencedColumnName: id
             orphanRemoval: false
         timezone:
-            targetEntity: Application\BrauneDigital\GeoBundle\Entity\Timezone
+            targetEntity: 'Application\BrauneDigital\GeoBundle\Entity\Timezone'
             cascade: {  }
             fetch: LAZY
             mappedBy: null

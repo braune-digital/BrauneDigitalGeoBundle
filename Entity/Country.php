@@ -62,8 +62,6 @@ class Country
 
     protected $cities;
 
-    protected $image;
-
     /**
      * Returns the unique identifier of this country in the local database
      * 
@@ -216,22 +214,6 @@ class Country
     public function setCities($cities)
     {
         $this->cities = $cities;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param mixed $image
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
     }
 
 

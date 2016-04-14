@@ -11,7 +11,6 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 class CountryAdmin extends TranslationAdmin
 {
-
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -57,11 +56,6 @@ class CountryAdmin extends TranslationAdmin
                     'label' => ''
                 ))
             ->end()
-            ->with('General')
-            ->add('image', 'sonata_type_model_list', array(
-                'required' => false
-            ))
-            ->end()
             ->with('Information')
                 ->add('code', null, array('read_only' => true))
                 ->add('domain', null, array('read_only' => true))
@@ -98,7 +92,6 @@ class CountryAdmin extends TranslationAdmin
 				'label' => 'Country'
 			))
             ->add('code')
-            ->add('image')
         ;
     }
 
