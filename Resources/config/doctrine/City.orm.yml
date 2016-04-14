@@ -1,6 +1,6 @@
 'BrauneDigital\GeoBundle\Entity\City':
     type: mappedSuperclass
-    table: bd_geo_city
+    table: geo_city
     repositoryClass: 'BrauneDigital\GeoBundle\Entity\CityRepository'
     fields:
         geonameIdentifier:

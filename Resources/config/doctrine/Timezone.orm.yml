@@ -1,6 +1,6 @@
 'BrauneDigital\GeoBundle\Entity\Timezone':
     type: mappedSuperclass
-    table: bd_geo_timezone
+    table: geo_timezone
     repositoryClass: 'BrauneDigital\GeoBundle\Entity\TimezoneRepository'
     fields:
         code:

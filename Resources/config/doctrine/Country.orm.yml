@@ -1,6 +1,6 @@
 'BrauneDigital\GeoBundle\Entity\Country':
     type: mappedSuperclass
-    table: bd_geo_country
+    table: geo_country
     repositoryClass: 'BrauneDigital\GeoBundle\Entity\CountryRepository'
     fields:
         code:
