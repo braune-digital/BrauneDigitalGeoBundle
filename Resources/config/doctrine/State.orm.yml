@@ -49,14 +49,6 @@
             nullable: true
             precision: 0
             column: modification_date
-        oldSlug:
-            type: string
-            scale: 0
-            length: 255
-            unique: false
-            nullable: true
-            precision: 0
-            column: old_slug
     manyToOne:
         country:
             targetEntity: 'Application\BrauneDigital\GeoBundle\Entity\Country'

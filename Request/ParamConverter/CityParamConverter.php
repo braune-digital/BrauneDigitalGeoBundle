@@ -37,23 +37,8 @@ class CityParamConverter implements ParamConverterInterface {
 				));
 			$cities = $query->getResult();
 
-			// Care for old slugs
 			if (count($cities) == 0) {
-				$query = $this->em
-					->createQuery(
-						'SELECT c FROM ApplicationBrauneDigitalGeoBundle:City c '
-						. 'WHERE c.oldSlug = :slug '
-						. 'ORDER BY c.id asc ')
-					->setParameters(array(
-						'slug' => $slug
-					));
-				$cities = $query->getResult();
-				if (count($cities) > 0) {
-					$city = $cities[0];
-					$request->attributes->set('redirect', true);
-				} else {
-					throw new NotFoundHttpException($request->getPathInfo());
-				}
+				throw new NotFoundHttpException($request->getPathInfo());
 			} else {
 				$city = $cities[0];
 			}

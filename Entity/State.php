@@ -74,11 +74,6 @@ class State
 	protected $modificationDate;
 
 	/**
-	 * @var string
-	 */
-	private $oldSlug;
-
-	/**
 	 * Creates a new locality
 	 */
 	public function __construct()
@@ -311,22 +306,4 @@ class State
 			return $this->translate($this->getDefaultLocale())->getNameUtf8();
 		}
 	}
-
-	/**
-	 * @return string
-	 */
-	public function getOldSlug()
-	{
-		return $this->oldSlug;
-	}
-
-	/**
-	 * @param string $oldSlug
-	 */
-	public function setOldSlug($oldSlug)
-	{
-		$this->oldSlug = $oldSlug;
-	}
-
-
 }

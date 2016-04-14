@@ -36,8 +36,7 @@ class CountryParamConverter implements ParamConverterInterface {
                     'id' => $slug
                 ));
             $countries = $query->getResult();
-
-            // Care for old slugs
+            
             if (count($countries) > 0) {
                 $country = $countries[0];
             } else {

@@ -41,30 +41,6 @@
             nullable: true
             precision: 0
             column: modification_date
-        oldSlug:
-            type: string
-            scale: 0
-            length: 255
-            unique: false
-            nullable: true
-            precision: 0
-            column: old_slug
-        oldNameUtf8:
-            type: string
-            scale: 0
-            length: null
-            unique: false
-            nullable: true
-            precision: 0
-            column: old_name_utf8
-        oldNameAscii:
-            type: string
-            scale: 0
-            length: null
-            unique: false
-            nullable: true
-            precision: 0
-            column: old_name_ascii
         fcode:
             type: string
             scale: 0

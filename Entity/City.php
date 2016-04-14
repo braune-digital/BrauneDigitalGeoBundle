@@ -77,23 +77,6 @@ class City
 	 */
 	protected $modificationDate;
 
-	/**
-	 * @var string
-	 */
-	private $oldSlug;
-
-	/**
-	 * Name (UTF-8 encoded)
-	 * @var string
-	 */
-	protected $oldNameUtf8;
-
-	/**
-	 * Name (UTF-8 encoded)
-	 * @var string
-	 */
-	protected $oldNameAscii;
-
     /**
      * Name (UTF-8 encoded)
      * @var string
@@ -355,53 +338,6 @@ class City
 
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getOldSlug()
-	{
-		return $this->oldSlug;
-	}
-
-	/**
-	 * @param string $oldSlug
-	 */
-	public function setOldSlug($oldSlug)
-	{
-		$this->oldSlug = $oldSlug;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getOldNameUtf8()
-	{
-		return $this->oldNameUtf8;
-	}
-
-	/**
-	 * @param mixed $oldNameUtf8
-	 */
-	public function setOldNameUtf8($oldNameUtf8)
-	{
-		$this->oldNameUtf8 = $oldNameUtf8;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getOldNameAscii()
-	{
-		return $this->oldNameAscii;
-	}
-
-	/**
-	 * @param string $oldNameAscii
-	 */
-	public function setOldNameAscii($oldNameAscii)
-	{
-		$this->oldNameAscii = $oldNameAscii;
-	}
 
     /**
      * @return string
