@@ -1,0 +1,8 @@
+'Application\BrauneDigital\GeoBundle\Entity\Timezone':
+    type: entity
+    table: geo_timezone
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO

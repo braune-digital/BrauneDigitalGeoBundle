@@ -1,0 +1,8 @@
+'Application\BrauneDigital\GeoBundle\Entity\City':
+    type: entity
+    table: geo_city
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO

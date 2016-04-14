@@ -1,0 +1,3 @@
+'Application\BrauneDigital\GeoBundle\Entity\StateTranslation':
+    type: entity
+    table: geo_state_translation

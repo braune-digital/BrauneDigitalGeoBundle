@@ -49,3 +49,8 @@
             nullable: true
             precision: 0
     lifecycleCallbacks: {  }
+    oneToMany:
+        cities:
+            targetEntity: 'Application\BrauneDigital\GeoBundle\Entity\City'
+            fetch: LAZY
+            mappedBy: country

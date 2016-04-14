@@ -1,0 +1,3 @@
+'Application\BrauneDigital\GeoBundle\Entity\CityTranslation':
+    type: entity
+    table: geo_city_translation

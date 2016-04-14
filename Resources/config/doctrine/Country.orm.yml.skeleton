@@ -1,0 +1,8 @@
+'Application\BrauneDigital\GeoBundle\Entity\Country':
+    type: entity
+    table: geo_country
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
