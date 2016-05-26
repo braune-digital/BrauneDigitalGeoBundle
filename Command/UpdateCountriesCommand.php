@@ -47,33 +47,34 @@ class UpdateCountriesCommand extends ContainerAwareCommand
                 continue;
             }
             foreach ($countries as $country) {
-                $entity = $em->getRepository('ApplicationBrauneDigitalGeoBundle:Country')->findOneByCode($country['countryCode']);
-
-                if (!$entity) {
-                    $entity = new Country();
-                    $entity->setCode($country['countryCode']);
-                    $entity->setName($country['countryName']);
-                    $em->persist($entity);
-                    $em->flush();
+                $c = $em->getRepository('ApplicationBrauneDigitalGeoBundle:Country')->findOneByCode($country['countryCode']);
+                if (!$c) {
+                    $c = new Country();
+                    $c->setCode($country['countryCode']);
+                    $c->setName($country['countryName']);
+                    $em->persist($c);
                     $numAdded++;
-                }else if($entity->getName() == null) {
-                    $entity->setName($country['countryName']);
+                } else if ($c->getName() == null) {
+                    $c->setName($country['countryName']);
                 }
+
+                $c->setGeonameIdentifier($country['geonameId']);
 
 
                 $languages = explode(',',  $country['languages']);
                 foreach($languages as $index=>$language) {
-                    //cut language at '-'
                     $trimmed = explode('-', $language);
                     $languages[$index] = $trimmed[0];
                 }
-                //add languages if not already existing
-                $entity->setLanguages(array_merge($entity->getLanguages(), array_diff($languages, $entity->getLanguages())));
-
+                if (is_array($c->getLanguages())) {
+                    $c->setLanguages(array_merge($c->getLanguages(), array_diff($languages, $c->getLanguages())));
+                } else {
+                    $c->setLanguages($languages);
+                }
                 //add Translation
-				$entity->translate($locale, false)->setName($country['countryName']);
-				$em->persist($entity);
-				$entity->mergeNewTranslations();
+                $c->translate($locale, false)->setName($country['countryName']);
+				$em->persist($c);
+                $c->mergeNewTranslations();
                 $em->flush();
                 $numUpdated++;
 

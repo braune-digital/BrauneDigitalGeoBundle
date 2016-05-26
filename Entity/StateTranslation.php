@@ -6,6 +6,8 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 class StateTranslation
 {
+
+
 	/**
 	 * Name (UTF-8 encoded)
 	 * @var string

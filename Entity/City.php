@@ -15,6 +15,8 @@ use JMS\Serializer\Annotation as JMS;
 class City
 {
 
+	use ORMBehaviors\Timestampable\Timestampable;
+
 	/**
 	 * State
 	 *
@@ -62,20 +64,6 @@ class City
 	 * @var Timezone
 	 */
 	protected $timezone;
-
-	/**
-	 * Creation date
-	 *
-	 * @var DateTime
-	 */
-	protected $creationDate;
-
-	/**
-	 * Modification date
-	 *
-	 * @var DateTime
-	 */
-	protected $modificationDate;
 
     /**
      * Name (UTF-8 encoded)
@@ -232,30 +220,6 @@ class City
 	public function getCreationDate()
 	{
 		return $this->creationDate;
-	}
-
-	/**
-	 * Returns the modification date of this locality
-	 *
-	 * @return DateTime
-	 */
-	public function getModificationDate()
-	{
-		return $this->modificationDate;
-	}
-
-	/**
-	 * Sets the modification date of this locality
-	 *
-	 * @param \DateTime $modificationDate Modification date
-	 *
-	 * @return Locality
-	 */
-	public function setModificationDate(\DateTime $modificationDate)
-	{
-		$this->modificationDate = $modificationDate;
-
-		return $this;
 	}
 
 

@@ -4,6 +4,7 @@ parameters:
     braune_digital.geo.request.param_converter.city.class: 'BrauneDigital\GeoBundle\Request\ParamConverter\CityParamConverter'
     braune_digital.geo.request.param_converter.city.priority: 10
     braune_digital.geo.update.class: 'BrauneDigital\GeoBundle\Services\Update'
+    braune_digital.geo.request.class: 'BrauneDigital\GeoBundle\Services\Request'
     braune_digital.geo.city.admin.class: 'BrauneDigital\GeoBundle\Admin\CityAdmin'
     braune_digital.geo.country.admin.class: 'BrauneDigital\GeoBundle\Admin\CountryAdmin'
 
@@ -11,6 +12,10 @@ parameters:
 services:
     braune_digital.geo.update:
         class: '%braune_digital.geo.update.class%'
+        arguments: ['@doctrine.orm.entity_manager', '@service_container']
+
+    braune_digital.geo.request:
+        class: '%braune_digital.geo.request.class%'
         arguments: ['@doctrine.orm.entity_manager', '@service_container']
 
     sonata.admin.braunedigital.geo.city:

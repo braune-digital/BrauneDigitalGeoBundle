@@ -18,6 +18,16 @@ use Doctrine\ORM\Mapping\Table;
 class Timezone
 {
     /**
+     * GeoNames.org ID
+     *
+     * Uniquely identifies this locality for syncronization from data on
+     * GeoNames.org.
+     *
+     * @var integer
+     */
+    protected $geonameIdentifier;
+
+    /**
      * Country
      *
      * @var Country
@@ -76,4 +86,22 @@ class Timezone
 
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getGeonameIdentifier()
+    {
+        return $this->geonameIdentifier;
+    }
+
+    /**
+     * @param int $geonameIdentifier
+     */
+    public function setGeonameIdentifier($geonameIdentifier)
+    {
+        $this->geonameIdentifier = $geonameIdentifier;
+    }
+
+
 }

@@ -3,6 +3,14 @@
     table: geo_timezone
     repositoryClass: 'BrauneDigital\GeoBundle\Entity\TimezoneRepository'
     fields:
+        geonameIdentifier:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+            column: geoname_id
         code:
             type: string
             scale: 0

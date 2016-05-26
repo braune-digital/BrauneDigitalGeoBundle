@@ -14,6 +14,7 @@ use JMS\Serializer\Annotation as JMS;
  */
 class State
 {
+
 	/**
 	 * GeoNames.org ID
 	 *

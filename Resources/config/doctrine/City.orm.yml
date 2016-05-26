@@ -1,4 +1,4 @@
-'BrauneDigital\GeoBundle\Entity\City':
+BrauneDigital\GeoBundle\Entity\City:
     type: mappedSuperclass
     table: geo_city
     repositoryClass: 'BrauneDigital\GeoBundle\Entity\CityRepository'
@@ -25,22 +25,6 @@
             unique: false
             nullable: false
             precision: 9
-        creationDate:
-            type: datetime
-            scale: 0
-            length: null
-            unique: false
-            nullable: false
-            precision: 0
-            column: creation_date
-        modificationDate:
-            type: datetime
-            scale: 0
-            length: null
-            unique: false
-            nullable: true
-            precision: 0
-            column: modification_date
         fcode:
             type: string
             scale: 0

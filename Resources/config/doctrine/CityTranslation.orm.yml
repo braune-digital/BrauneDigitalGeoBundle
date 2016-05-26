@@ -1,4 +1,4 @@
-'BrauneDigital\GeoBundle\Entity\CityTranslation':
+BrauneDigital\GeoBundle\Entity\CityTranslation:
     type: mappedSuperclass
     table: geo_city_translation
     fields:

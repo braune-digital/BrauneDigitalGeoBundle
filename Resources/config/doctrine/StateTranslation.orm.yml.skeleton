@@ -1,3 +1,8 @@
 'Application\BrauneDigital\GeoBundle\Entity\StateTranslation':
     type: entity
     table: geo_state_translation
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO

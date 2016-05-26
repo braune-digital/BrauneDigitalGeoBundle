@@ -27,25 +27,6 @@ class Update {
 
         if(!$city->getGeonameIdentifier()) {
 
-           /* //search for a city with this name
-            $dql = "
-				  SELECT c
-				  FROM ApplicationBrauneDigitalGeoBundle:City c
-				  JOIN c.translations ctr
-				  WHERE ctr.nameUtf8 LIKE :nameUtf8
-				  ORDER BY ctr.nameUtf8
-				";
-            $query = $this->em->createQuery($dql)->setParameter('nameUtf8', $city->getNameUtf8());
-            $cities = $query->getResult();
-
-            if (count($cities) > 0) {
-                //TODO: City with the same name exists, therefore the existing city is not the correct one
-                //$city = $cities[0];
-            }
-            else {
-                return;
-            } */
-
             $client = new Client();
 
             if($city->getCountry()) {

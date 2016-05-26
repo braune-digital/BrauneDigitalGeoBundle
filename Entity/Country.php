@@ -14,6 +14,16 @@ class Country
 {
 
     /**
+     * GeoNames.org ID
+     *
+     * Uniquely identifies this locality for syncronization from data on
+     * GeoNames.org.
+     *
+     * @var integer
+     */
+    protected $geonameIdentifier;
+
+    /**
      * ISO code (2 character)
      *
      * @var string
@@ -274,4 +284,22 @@ class Country
     public function __get($method) {
         return $this->proxyCurrentLocaleTranslation($method);
     }
+
+    /**
+     * @return int
+     */
+    public function getGeonameIdentifier()
+    {
+        return $this->geonameIdentifier;
+    }
+
+    /**
+     * @param int $geonameIdentifier
+     */
+    public function setGeonameIdentifier($geonameIdentifier)
+    {
+        $this->geonameIdentifier = $geonameIdentifier;
+    }
+
+
 }
