@@ -4,9 +4,13 @@ namespace BrauneDigital\GeoBundle\Services;
 use Application\BrauneDigital\GeoBundle\Entity\City;
 use Application\BrauneDigital\GeoBundle\Entity\State;
 use Application\BrauneDigital\GeoBundle\Entity\Timezone;
+use BrauneDigital\GeoBundle\Model\GeoInterface;
 use GuzzleHttp\Client;
 
 class Request {
+
+    const GEONAMES_TYPE_CITY = 'P';
+    const GEONAMES_TYPE_COUNTRY = 'A';
 
     protected $em;
     protected $languages;
@@ -21,10 +25,55 @@ class Request {
     }
 
     /**
+     * @param $fcl
+     * @param $geonameId
+     * @return mixed
+     */
+    public function request($fcl, $geonameId, GeoInterface $entity)
+    {
+        switch ($fcl) {
+            case self::GEONAMES_TYPE_CITY:
+                $this->requestCity($geonameId, $entity);
+                break;
+            case self::GEONAMES_TYPE_COUNTRY:
+                $this->requestCountry($geonameId, $entity);
+                break;
+        }
+        return $entity;
+    }
+
+    /**
      * @param integer $geonameId
      * @return City
      */
-    public function requestCity($geonameId)
+    public function requestCountry($geonameId, GeoInterface $entity)
+    {
+        $country = $this->container->get('doctrine')->getRepository('Application\BrauneDigital\GeoBundle\Entity\Country')->findOneBy(array(
+            'geonameIdentifier' => $geonameId
+        ));
+
+        if (!$country) {
+            $city = new City();
+            $client = new Client();
+            $request = $client->createRequest('GET', 'http://api.geonames.org/getJSON?geonameId=' . $geonameId . '&username=' . $this->container->getParameter('geonames_user'));
+            $response = $client->send($request);
+            $result = $response->json();
+
+            if ($result != null && array_key_exists('adminId1', $result) && array_key_exists('geonameId', $result)) {
+
+                $country = $this->em->getRepository('ApplicationBrauneDigitalGeoBundle:Country')->findOneByCode($result['countryCode']);
+            }
+        }
+
+        $entity->setCountry($country);
+        return $country;
+    }
+
+    /**
+     * @param integer $geonameId
+     * @return City
+     */
+    public function requestCity($geonameId, GeoInterface $entity)
     {
 
 
@@ -41,16 +90,17 @@ class Request {
 
             if($result != null && array_key_exists('adminId1', $result) && array_key_exists('geonameId', $result)) {
                 $country = $this->em->getRepository('ApplicationBrauneDigitalGeoBundle:Country')->findOneByCode($result['countryCode']);
+                $entity->setCountry($country);
 
                 $city->setLatitude($result['lat']);
                 $city->setLongitude($result['lng']);
                 $city->setFcode($result['fcode']);
 
                 $city->setTimezone($this->em->getRepository('ApplicationBrauneDigitalGeoBundle:Timezone')->findOneByCode($result['timezone']['timeZoneId']));
-                $city->setCountry($country);
                 $city->setGeonameIdentifier($result['geonameId']);
 
                 $locales = $this->em->getRepository('BrauneDigitalTranslationBaseBundle:Language')->getEnabledCodes();
+
                 foreach ($locales as $locale) {
                     $names = array_filter($result['alternateNames'], function($n) use ($locale) {
                         if (!isset($n['lang'])) {
@@ -71,6 +121,9 @@ class Request {
             }
 
         }
+
+
+        $entity->setCity($city);
 
 
         return $city;
