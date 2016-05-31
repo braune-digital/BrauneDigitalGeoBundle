@@ -122,9 +122,7 @@ class Request {
 
         }
 
-
         $entity->setCity($city);
-
 
         return $city;
     }

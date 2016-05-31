@@ -8,8 +8,9 @@ use BrauneDigital\GeoBundle\Entity\State;
 
 interface GeoInterface
 {
-
 	public function setCity(City $city);
 	public function setCountry(Country $country);
 	public function setState(State $state);
+	public function setLatitude($latitude);
+	public function setLongitude($longitude);
 }

@@ -62,8 +62,6 @@ class Country
      */
     protected $phonePrefix;
 
-
-
     /**
      * @var array
      *
