@@ -88,7 +88,7 @@ class Request {
 
             if($result != null && array_key_exists('adminId1', $result) && array_key_exists('geonameId', $result)) {
                 $country = $this->em->getRepository('ApplicationBrauneDigitalGeoBundle:Country')->findOneByCode($result['countryCode']);
-                $entity->setCountry($country);
+                $city->setCountry($country);
 
                 $city->setLatitude($result['lat']);
                 $city->setLongitude($result['lng']);
@@ -99,20 +99,18 @@ class Request {
 
                 $locales = $this->em->getRepository('BrauneDigitalTranslationBaseBundle:Language')->getEnabledCodes();
 
-                $alternateNames = $result['alternateNames'];
+                foreach($result['alternateNames'] as $alternateName) {
 
-                foreach ($locales as $locale) {
-                    $names = array_filter($alternateNames, function($n) use ($locale) {
-                        if (!isset($n['lang'])) {
-                            return false;
-                        }
-                        return $locale == $n['lang'];
-                    });
-                    if (count($names)) {
-                        $city->translate($locale)->setNameUtf8($names[array_keys($names)[0]]['name']);
+                    if (count($locales) == 0) {
+                        break;
+                    }
+
+                    if (isset($alternateName['lang']) && in_array($alternateName['lang'], $locales)) {
+                        $city->translate($alternateName['lang'])->setNameUtf8($alternateName['name']);
+                        unset ($locales[$alternateName['lang']]);
                     }
                 }
-
+                
                 $this->em->persist($city);
                 $city->mergeNewTranslations();
                 $this->em->flush();

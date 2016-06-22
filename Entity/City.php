@@ -76,7 +76,6 @@ class City
 	 */
 	public function __construct()
 	{
-		$this->creationDate = new \DateTime();
         $this->latitude = 0;
         $this->longitude = 0;
 	}
@@ -211,17 +210,6 @@ class City
 
 		return $this;
 	}
-
-	/**
-	 * Returns the creation date of this locality
-	 *
-	 * @return DateTime
-	 */
-	public function getCreationDate()
-	{
-		return $this->creationDate;
-	}
-
 
     /**
      * Returns the state
