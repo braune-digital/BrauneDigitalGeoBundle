@@ -53,7 +53,6 @@ class Request {
         ));
 
         if (!$country) {
-            $city = new City();
             $client = new Client();
             $request = $client->createRequest('GET', 'http://api.geonames.org/getJSON?geonameId=' . $geonameId . '&username=' . $this->container->getParameter('geonames_user'));
             $response = $client->send($request);
@@ -75,7 +74,6 @@ class Request {
      */
     public function requestCity($geonameId, GeoInterface $entity)
     {
-
 
         $city = $this->container->get('doctrine')->getRepository('Application\BrauneDigital\GeoBundle\Entity\City')->findOneBy(array(
             'geonameIdentifier' => $geonameId
@@ -101,15 +99,18 @@ class Request {
 
                 $locales = $this->em->getRepository('BrauneDigitalTranslationBaseBundle:Language')->getEnabledCodes();
 
+                $alternateNames = $result['alternateNames'];
+
                 foreach ($locales as $locale) {
-                    $names = array_filter($result['alternateNames'], function($n) use ($locale) {
+                    $names = array_filter($alternateNames, function($n) use ($locale) {
                         if (!isset($n['lang'])) {
                             return false;
                         }
                         return $locale == $n['lang'];
                     });
-
-                    $city->translate($locale)->setNameUtf8($names[array_keys($names)[0]]['name']);
+                    if (count($names)) {
+                        $city->translate($locale)->setNameUtf8($names[array_keys($names)[0]]['name']);
+                    }
                 }
 
                 $this->em->persist($city);
